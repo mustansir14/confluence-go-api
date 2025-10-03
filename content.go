@@ -236,20 +236,22 @@ func (a *API) GetChildPages(id string) (*Search, error) {
 }
 
 // GetComments returns a list of comments belonging to id
-func (a *API) GetComments(id string) (*Search, error) {
+func (a *API) GetComments(id string, query ContentQuery) (*Search, error) {
 	ep, err := a.getContentChildEndpoint(id, "comment")
 	if err != nil {
 		return nil, err
 	}
+	ep.RawQuery = addContentQueryParams(query).Encode()
 	return a.SendSearchRequest(ep, "GET")
 }
 
 // GetAttachments returns a list of attachments belonging to id
-func (a *API) GetAttachments(id string) (*Search, error) {
+func (a *API) GetAttachments(id string, query ContentQuery) (*Search, error) {
 	ep, err := a.getContentChildEndpoint(id, "attachment")
 	if err != nil {
 		return nil, err
 	}
+	ep.RawQuery = addContentQueryParams(query).Encode()
 	return a.SendSearchRequest(ep, "GET")
 }
 
