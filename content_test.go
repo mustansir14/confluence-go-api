@@ -47,11 +47,11 @@ func TestContentGetter(t *testing.T) {
 	assert.Nil(t, err)
 	assert.Equal(t, &Search{}, p)
 
-	p, err = api.GetComments("42")
+	p, err = api.GetComments("42", ContentQuery{})
 	assert.Nil(t, err)
 	assert.Equal(t, &Search{}, p)
 
-	p, err = api.GetAttachments("42")
+	p, err = api.GetAttachments("42", ContentQuery{})
 	assert.Nil(t, err)
 	assert.Equal(t, &Search{}, p)
 
