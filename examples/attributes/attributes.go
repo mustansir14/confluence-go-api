@@ -14,7 +14,7 @@ func main() {
 	}
 
 	// get comments of a specific page
-	res, err := api.GetComments("1234567")
+	res, err := api.GetComments("1234567", goconfluence.ContentQuery{})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -24,7 +24,7 @@ func main() {
 	}
 
 	// get attachments of a specific page
-	res, err = api.GetAttachments("1234567")
+	res, err = api.GetAttachments("1234567", goconfluence.ContentQuery{})
 	if err != nil {
 		log.Fatal(err)
 	}
